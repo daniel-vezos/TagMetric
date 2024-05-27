@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "884868619705",
+    "project_id": "tagmetric",
+    "storage_bucket": "tagmetric.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:884868619705:android:83907d7eaaa8e8b190aa68",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdqPXBoUqsZ1wnwJDoDD9FR7m574IlEnw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
