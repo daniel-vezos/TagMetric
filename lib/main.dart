@@ -103,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
           const Text(
             "Preencha os campos a seguir",
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 12,
               fontWeight: FontWeight.bold,
               color: Colors.black,
               height: 5,
@@ -115,13 +115,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       const Text("Frequência"),
                       const SizedBox(width: 10),
                       Container(
                         width: 270,
-                        height: 50,
+                        height: 40,
                         child: TextFormField(
                           controller: _frequencia,
                           keyboardType: TextInputType.number,
@@ -143,7 +143,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       const SizedBox(width: 10),
                       Container(
                         width: 270,
-                        height: 50,
+                        height: 40,
                         child: TextFormField(
                           controller: _potencia,
                           keyboardType: TextInputType.number,
@@ -165,7 +165,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       const SizedBox(width: 10),
                       Container(
                         width: 270,
-                        height: 50,
+                        height: 40,
                         child: TextFormField(
                           controller: _ganho,
                           keyboardType: TextInputType.number,
@@ -187,7 +187,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       const SizedBox(width: 10),
                       Container(
                         width: 270,
-                        height: 50,
+                        height: 40,
                         child: TextFormField(
                           controller: _vswr,
                           keyboardType: TextInputType.number,
@@ -209,7 +209,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       const SizedBox(width: 10),
                       Container(
                         width: 270,
-                        height: 50,
+                        height: 40,
                         child: TextFormField(
                           controller: _cabo,
                           keyboardType: TextInputType.number,
@@ -231,7 +231,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       const SizedBox(width: 10),
                       Container(
                         width: 270,
-                        height: 50,
+                        height: 40,
                         child: TextFormField(
                           controller: _sensibilidade,
                           keyboardType: TextInputType.number,
@@ -245,7 +245,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 10),
                   ElevatedButton(
                     onPressed: _calcularDistanciaMaximaLeitura,
                     child: const Text("Calcular"),
@@ -258,7 +258,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 25),
+                  const SizedBox(height: 15),
                   Center(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
