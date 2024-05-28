@@ -98,209 +98,223 @@ class _MyHomePageState extends State<MyHomePage> {
             style: const TextStyle(color: Color.fromARGB(255, 255, 255, 255))),
         backgroundColor: const Color.fromARGB(255, 0, 0, 0),
       ),
-      body: Column(
+      body: Stack(
         children: [
-          const Text(
-            "Preencha os campos a seguir",
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-              height: 5,
+          Column(
+            children: [
+              const Text(
+                "Preencha os campos a seguir",
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                  height: 5,
+                ),
+              ),
+              Expanded(
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          const Text("Frequência"),
+                          const SizedBox(width: 10),
+                          Container(
+                            width: 270,
+                            height: 35,
+                            child: TextFormField(
+                              controller: _frequencia,
+                              keyboardType: TextInputType.number,
+                              decoration: const InputDecoration(
+                                hintText: 'MHz',
+                                border: OutlineInputBorder(),
+                                contentPadding: EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 10),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 16),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text("Potência do leitor (max)"),
+                          const SizedBox(width: 10),
+                          Container(
+                            width: 270,
+                            height: 35,
+                            child: TextFormField(
+                              controller: _potencia,
+                              keyboardType: TextInputType.number,
+                              decoration: const InputDecoration(
+                                hintText: 'dBm',
+                                border: OutlineInputBorder(),
+                                contentPadding: EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 10),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 16),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text("Ganho antena"),
+                          const SizedBox(width: 10),
+                          Container(
+                            width: 270,
+                            height: 35,
+                            child: TextFormField(
+                              controller: _ganho,
+                              keyboardType: TextInputType.number,
+                              decoration: const InputDecoration(
+                                hintText: 'dBi',
+                                border: OutlineInputBorder(),
+                                contentPadding: EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 10),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 16),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text("VSWR antena"),
+                          const SizedBox(width: 10),
+                          Container(
+                            width: 270,
+                            height: 35,
+                            child: TextFormField(
+                              controller: _vswr,
+                              keyboardType: TextInputType.number,
+                              decoration: const InputDecoration(
+                                hintText: '%',
+                                border: OutlineInputBorder(),
+                                contentPadding: EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 10),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 16),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text("Comprimento cabo da antena"),
+                          const SizedBox(width: 10),
+                          Container(
+                            width: 270,
+                            height: 35,
+                            child: TextFormField(
+                              controller: _cabo,
+                              keyboardType: TextInputType.number,
+                              decoration: const InputDecoration(
+                                hintText: 'mts',
+                                border: OutlineInputBorder(),
+                                contentPadding: EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 10),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 16),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text("Sensibilidade CI tag"),
+                          const SizedBox(width: 10),
+                          Container(
+                            width: 270,
+                            height: 35,
+                            child: TextFormField(
+                              controller: _sensibilidade,
+                              keyboardType: TextInputType.number,
+                              decoration: const InputDecoration(
+                                hintText: 'dBm',
+                                border: OutlineInputBorder(),
+                                contentPadding: EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 10),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+                      ElevatedButton(
+                        onPressed: _calcularDistanciaMaximaLeitura,
+                        child: const Text("Calcular"),
+                      ),
+                      const SizedBox(height: 16),
+                      Text(
+                        "Distância máxima de leitura: ${_distanciaMaximaLeitura.toStringAsFixed(1)}m",
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Positioned(
+            top: 13,
+            left: 25,
+            child: SizedBox(
+              width: 80, // Defina a largura desejada
+              height: 35, // Defina a altura desejada, se necessário
+              child: ElevatedButton(
+                onPressed: _limparCampos,
+                child: const Text(
+                  "Reset",
+                  style: TextStyle(fontSize: 11),
+                ),
+              ),
             ),
           ),
-          Expanded(
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      const Text("Frequência"),
-                      const SizedBox(width: 10),
-                      Container(
-                        width: 270,
-                        height: 40,
-                        child: TextFormField(
-                          controller: _frequencia,
-                          keyboardType: TextInputType.number,
-                          decoration: const InputDecoration(
-                            hintText: 'MHz',
-                            border: OutlineInputBorder(),
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 10),
-                          ),
-                        ),
+          Positioned(
+            top: 13,
+            right: 25,
+            child: SizedBox(
+              width: 70, // Defina a largura desejada
+              height: 35, // Defina a altura desejada, se necessário
+              child: ElevatedButton(
+                onPressed: () {
+                  if (_frequencia.text.isNotEmpty &&
+                      _potencia.text.isNotEmpty &&
+                      _ganho.text.isNotEmpty &&
+                      _vswr.text.isNotEmpty &&
+                      _cabo.text.isNotEmpty &&
+                      _sensibilidade.text.isNotEmpty) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LineChartPage(
+                            frequencia: double.parse(_frequencia.text),
+                            potencia: double.parse(_potencia.text),
+                            ganho: double.parse(_ganho.text),
+                            vswr: double.parse(_vswr.text),
+                            cabo: double.parse(_cabo.text),
+                            sensibilidade: double.parse(_sensibilidade.text)),
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text("Potência do leitor (max)"),
-                      const SizedBox(width: 10),
-                      Container(
-                        width: 270,
-                        height: 40,
-                        child: TextFormField(
-                          controller: _potencia,
-                          keyboardType: TextInputType.number,
-                          decoration: const InputDecoration(
-                            hintText: 'dBm',
-                            border: OutlineInputBorder(),
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 10),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text("Ganho antena"),
-                      const SizedBox(width: 10),
-                      Container(
-                        width: 270,
-                        height: 40,
-                        child: TextFormField(
-                          controller: _ganho,
-                          keyboardType: TextInputType.number,
-                          decoration: const InputDecoration(
-                            hintText: 'dBi',
-                            border: OutlineInputBorder(),
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 10),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text("VSWR antena"),
-                      const SizedBox(width: 10),
-                      Container(
-                        width: 270,
-                        height: 40,
-                        child: TextFormField(
-                          controller: _vswr,
-                          keyboardType: TextInputType.number,
-                          decoration: const InputDecoration(
-                            hintText: '%',
-                            border: OutlineInputBorder(),
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 10),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text("Comprimento cabo da antena"),
-                      const SizedBox(width: 10),
-                      Container(
-                        width: 270,
-                        height: 40,
-                        child: TextFormField(
-                          controller: _cabo,
-                          keyboardType: TextInputType.number,
-                          decoration: const InputDecoration(
-                            hintText: 'mts',
-                            border: OutlineInputBorder(),
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 10),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text("Sensibilidade CI tag"),
-                      const SizedBox(width: 10),
-                      Container(
-                        width: 270,
-                        height: 40,
-                        child: TextFormField(
-                          controller: _sensibilidade,
-                          keyboardType: TextInputType.number,
-                          decoration: const InputDecoration(
-                            hintText: 'dBm',
-                            border: OutlineInputBorder(),
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 10),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 10),
-                  ElevatedButton(
-                    onPressed: _calcularDistanciaMaximaLeitura,
-                    child: const Text("Calcular"),
-                  ),
-                  const SizedBox(height: 16),
-                  Text(
-                    "Distância máxima de leitura: ${_distanciaMaximaLeitura.toStringAsFixed(1)}m",
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 15),
-                  Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const SizedBox(width: 20),
-                        ElevatedButton(
-                          onPressed: () {
-                            if (_frequencia.text.isNotEmpty &&
-                                _potencia.text.isNotEmpty &&
-                                _ganho.text.isNotEmpty &&
-                                _vswr.text.isNotEmpty &&
-                                _cabo.text.isNotEmpty &&
-                                _sensibilidade.text.isNotEmpty) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => LineChartPage(
-                                      frequencia:
-                                          double.parse(_frequencia.text),
-                                      potencia: double.parse(_potencia.text),
-                                      ganho: double.parse(_ganho.text),
-                                      vswr: double.parse(_vswr.text),
-                                      cabo: double.parse(_cabo.text),
-                                      sensibilidade:
-                                          double.parse(_sensibilidade.text)),
-                                ),
-                              );
-                            } else {
-                              // Mostrar algum aviso para o usuário preencher todos os campos
-                            }
-                          },
-                          child: Text('Gráfico'),
-                        ),
-                        const SizedBox(width: 20),
-                        ElevatedButton(
-                          onPressed: _limparCampos,
-                          child: const Text("Reset"),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
+                    );
+                  } else {
+                    // Mostrar algum aviso para o usuário preencher todos os campos
+                  }
+                },
+                child: const Center(
+                  child: Icon(Icons.bar_chart),
+                ),
               ),
             ),
           ),
