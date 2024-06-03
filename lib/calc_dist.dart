@@ -18,8 +18,15 @@ class Calculadora {
   });
 
   double calculoMetros() {
-    double perdaVswr = ((vswr - 1) / (vswr + 1)) * ((vswr - 1) / (vswr + 1));
-    double resultadoGanhoEmissoraRevisada = ganho - (ganho * perdaVswr);
+    //((C9-1)/(C9+1))^2
+    // double perdaVswr = ((vswr - 1) / (vswr + 1)) * ((vswr - 1) / (vswr + 1));
+
+    num perdaVswr = pow((vswr - 1) / (vswr + 1), 2);
+
+    double perdaVswr2 = 10 * (perdaVswr > 0 ? log(1 - perdaVswr) / log(10) : 0);
+
+    double resultadoGanhoEmissoraRevisada = ganho - perdaVswr;
+
     double perdaCaboConectores = (0.5 * cabo) + 0.4;
     double eirpCalculado =
         (potencia + resultadoGanhoEmissoraRevisada) - perdaCaboConectores;
